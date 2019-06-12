@@ -1,4 +1,3 @@
-const { CommonService } = require('../services/common.service');
 const { RoutesController } = require('./routes.controller');
 const { models, sequelize } = require('../models');
 const express = require('express');
