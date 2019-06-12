@@ -1,6 +1,5 @@
 const { CommonService } = require('../services/common.service');
 const { models } = require('../models');
-const { Op } = require('sequelize');
 
 let RoutesController = {};
 

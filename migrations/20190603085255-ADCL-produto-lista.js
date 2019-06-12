@@ -7,11 +7,7 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    // await queryInterface.removeColumn('produto-lista', 'comprado');
-    // await queryInterface.removeColumn('produto-lista', 'dataComprado');
-    await queryInterface.query(`
-      ALTER TABLE "produto-lista" DROP COLUMN comprado;
-      ALTER TABLE "produto-lista" DROP COLUMN dataComprado;
-    `);
+    await queryInterface.removeColumn('produto-lista', 'comprado');
+    await queryInterface.removeColumn('produto-lista', 'dataComprado');
   }
 };

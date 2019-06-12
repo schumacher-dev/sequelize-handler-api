@@ -3,7 +3,6 @@
 const fs        = require('fs');
 const path      = require('path');
 const Sequelize = require('sequelize');
-const { Op }    = require('sequelize');
 const basename  = path.basename(__filename);
 const env       = process.env.NODE_ENV || 'development';
 const config    = require(__dirname + '/../../config/config.js')[env];
@@ -11,11 +10,6 @@ const models        = {};
 
 if (!config.define) { config.define = {} }
 config.define.freezeTableName = true;
-config.define.operatorsAliases = {
-  $notIn: Op.notIn
-}
-
-console.log('AAA => ', config.define.operatorsAliases);
 
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable], config);

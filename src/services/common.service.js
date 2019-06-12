@@ -18,7 +18,6 @@ CommonService.sequelizeWhereOp = (whereObj, opSymbol) => {
 	function _whereAdjust(_whereObj, _opSymbol, res) {
 		let keys = Object.keys(_whereObj);
 		for (let k in keys) {
-			// console.log(keys[k]);
 			if (keys[k][0] == _opSymbol) {
 				console.log([Op[keys[k].slice(1)]]);
 				res[Op[keys[k].slice(1)]] = _whereObj[keys[k]];

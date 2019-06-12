@@ -4,7 +4,6 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const routes = require('./routes/index');
-const { models } = require('./models');
 
 var app = express();
 
@@ -14,13 +13,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+/**	
+ * CORS Policy
+ * Cross-origin resource sharing
+ */
 app.use(function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	next();
-  });
+});
 
 app.use('/', routes);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -28,6 +32,7 @@ app.use(function (req, res, next) {
 	err.status = 404;
 	next(err);
 });
+
 
 // error handler
 // no stacktraces leaked to user unless in development environment
@@ -37,6 +42,5 @@ app.use(function (err, req, res, next) {
 		code: err.code 
 	});
 });
-
 
 module.exports = app;

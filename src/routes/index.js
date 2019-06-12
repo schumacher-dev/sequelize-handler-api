@@ -22,7 +22,6 @@ function routeGuard(req, res, next) {
 router.post('/transaction/:transaction', async (req, res, next) => {
 	try {
 		let trx = require(`../transactions/${req.params.transaction}.trx`);
-		console.log(trx);
 		let result = await trx.execute(req, res);
 		res.send(result);
 	} catch (err) {
